@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from .routers import api
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-
+from .db.client import uri
 
 app = FastAPI()
 
@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 
-
-
 # Serve Vue app in production
 app.mount("/", StaticFiles(directory="../Front/dist", html=True), name="static")
+
+
