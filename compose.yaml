@@ -1,0 +1,36 @@
+services:
+  backend:
+    image: todo-app/backend
+    build: ./Back
+    # volumes:
+    #   - ./Back/:/usr/src/app
+    ports:
+      - "3001:3001"
+    develop:
+      watch:
+        - action: sync
+          path: ./Back
+          target: /usr/src/app
+  frontend:
+    image: todo-app/frontend
+    build:   ./Front
+    ports:
+      - "8080:8080"
+    develop:
+      watch:
+      - action: sync
+        path: ./Front
+        target: /app
+    depends_on:
+      - backend
+  nginx:
+    image: nginx:1.27
+    volumes:
+        - ./nginx/nginx.conf:/etc/nginx.conf.d/default.conf
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+      - frontend 
+
+      
