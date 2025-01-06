@@ -6,13 +6,14 @@ import { ref } from 'vue';
 
 const res = ref()
 
+const back_url = import.meta.env.BACK_URL
 // const store = useCounterStore()
 // const {count} = storeToRefs(store)
 // const {increment} = store
 
 
 async function fetchear() {
-    const response = await axios.get("http://127.0.0.1:8000/api/")
+    const response = await axios.get(back_url+"/api/")
     res.value = response
 }
 
