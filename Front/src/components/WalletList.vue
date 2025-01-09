@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { get_user } from "@/requests/back"
+import { fetchUser } from "@/requests/back"
 
 
-const wallets = await get_user()
+const wallets = await fetchUser()
 // console.log(wallets)
 
 </script>

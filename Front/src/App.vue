@@ -2,11 +2,11 @@
 
 import { RouterView } from 'vue-router'
 import NavBar from './components/Navbar.vue'
-import { useUsersStore } from './stores/users';
+import { useUserStore } from './stores/users';
 
 
 // provisorio
-const user = useUsersStore()
+const user = useUserStore()
 
 </script>
 

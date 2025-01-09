@@ -3,15 +3,15 @@ import { defineStore } from 'pinia'
 import { fetchOrCreateUser } from '@/requests/back'
 import { useWalletStore } from './wallet'
 
-export const useUsersStore = defineStore('user', () => {
+export const useUserStore = defineStore('user', () => {
   const loggedUser = ref()
   const wallet = useWalletStore()
   
   
-  watchEffect(() => {
+  watchEffect(async () => {
     if (wallet.address !== "") {
-        
-      loggedUser.value = fetchOrCreateUser(wallet.address)
+       
+      loggedUser.value = await fetchOrCreateUser(wallet.address)
     }
     else {
         loggedUser.value = null

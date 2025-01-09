@@ -9,3 +9,5 @@ load_dotenv()
 uri = os.getenv('MONGODB_URI')
 
 client = MongoClient(uri, server_api=ServerApi('1')).todolist
+users = client.users
+todolists = client.todolists
