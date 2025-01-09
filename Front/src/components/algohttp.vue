@@ -22,7 +22,7 @@ fetchear()
 </script>
 
 <template>
-    <div><button @click="fetchear">fetchear</button></div>
+    <!-- <div><button @click="fetchear">fetchear</button></div> -->
     <div v-if="res!=null">
         {{ res }}
     </div>

@@ -7,12 +7,7 @@ import algohttp from '@/components/algohttp.vue';
 
 <template>
 <div>
-    HOLA MUNDO
-    <MiComponente/>
-    <algohttp/>
-    <hr>
-
-    <MiComponente2 />
+    BODY
 </div>
 
 </template>

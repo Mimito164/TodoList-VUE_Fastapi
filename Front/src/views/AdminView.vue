@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, Suspense } from "vue";
 import WalletList from "@/components/WalletList.vue";
-import { create_user } from "@/requests/back";
+import { fetchOrCreateUser } from "@/requests/back";
 
 const input_wallet = ref()
 
@@ -12,7 +12,7 @@ const input_wallet = ref()
 <label for="wallet">Wallet Hash</label>
 <input type="text" id="wallet" v-model="input_wallet">
 
-<button @click="() => {create_user(input_wallet)}">Submmit</button>
+<button @click="() => {fetchOrCreateUser(input_wallet)}">Submmit</button>
 <hr>
 
 <Suspense>

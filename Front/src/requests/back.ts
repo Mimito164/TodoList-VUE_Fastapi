@@ -13,8 +13,9 @@ export async function get_user(): Promise<{id:string, wallet:string}[]> {
     }
 }
 
-export async function create_user(wallet:string): Promise<{id:string, wallet:string}> {
-    const res = await axios.post(BACK_URL+"/api/user", { wallet, id:"" } )
+export async function fetchOrCreateUser(wallet:string): Promise<{id:string, wallet:string}> {
+    const res = await axios.post(BACK_URL+"/api/user", { wallet, id:"", todolistIDs:[] } )
+    
     return res.data
 }
 
