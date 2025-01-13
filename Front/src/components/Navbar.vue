@@ -8,18 +8,25 @@ const wallet = useWalletStore()
 
 <template>
 
-<nav>
-    <ul>
-        <li>
-            <h5 class="pico-color-pink-500 ">📓 Crypto TodoList</h5>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            <button class="" v-if="wallet.address == ''" type="button" @click="wallet.connectWallet">Conectate</button>
+<div class="navWrapper">
+    <nav class="demo" style="height: 3em;">
+        <a href="#" class="brand">
+            <span>📌 Crypto TodoList</span>
+        </a>
+        <div class="menu">
+            <button  v-if="wallet.address == ''" @click="wallet.connectWallet">Connect</button>
             <button :style="{pointerEvents: 'none'}" v-else>{{ wallet.address }}</button>
-        </li>
-    </ul>
-</nav>
+
+        </div> 
+    </nav>
+</div>
+
 
 </template>
+
+<style scoped>
+.navWrapper {
+    overflow: hidden;
+    height: 3em;
+}
+</style>

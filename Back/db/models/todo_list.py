@@ -13,4 +13,10 @@ class TodoList(BaseModel):
 
 class CreateTodoList(BaseModel):
     todolist_name: str
-    user_id:str
+    user_id: MongoObjectId
+
+class UpdateTodoList(BaseModel):
+    user_id: str
+    todolist_id: str
+    todolist_name: Optional[str] = Field(default="")
+    todo_item: Optional[TodoItem] = Field(default=None)
