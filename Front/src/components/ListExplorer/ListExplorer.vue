@@ -1,57 +1,74 @@
 <script setup lang="ts">
 import ListEditor from './ListEditor.vue';
 import ListMenu from './ListMenu.vue';
-import { ref, watch } from 'vue';
 import { useUserStore } from '@/stores/users';
-import { createList, fetchList, fetchLists } from '@/requests/back';
-
+import { useListsStore } from '@/stores/lists';
+import { ref, watchEffect } from 'vue';
+// import { toast, type ToastOptions } from 'vue3-toastify';
 
 const userStore = useUserStore()
-const lists = ref<any[]>([])
-const selectedList= ref("")
+const listsStore = useListsStore()
 
-function updateSelected(newList: string) {
-    selectedList.value = newList
-}
+const selectedList = ref() 
 
-
-watch(()=>{return userStore.loggedUser}, async () => {
-    
-    if(userStore.loggedUser != null && Array.isArray(userStore.loggedUser.todolistIDs) ) {
-            const element = await fetchLists(userStore.loggedUser._id) ;
-            lists.value = element
-
-    }
-    else {
-        lists.value = []
-        selectedList.value = ""
-    }
+watchEffect(() => {
+    if (userStore.loggedUser == null) selectedList.value = null 
 })
 
+function selectList( list:any ) {   
+    selectedList.value = list
+}
 
+function deselectList( ) {
+  selectedList.value = null
+}
 
+function renameList(newName:string) {
+  selectedList.value.name = newName
+}
 </script>
 
 
 <template>
-<div>
-    <form  @submit="(e:Event)=>{
-        e.preventDefault()
-        const todolisName = (e.target as HTMLFormElement).elements.namedItem('todolistname') as HTMLInputElement;
-        const userID = userStore.loggedUser._id;
-        createList(userID, todolisName.value.toString())
-    }">
-        <fieldset role="group">
-            <input name="todolistname" type="text" placeholder="Enter todolist name" />
-            <input type="submit" value="add list" />
-        </fieldset>
-    </form>
-    <div class="grid" :style="{gridTemplateColumns:'1fr 3fr'}">
-        <ListMenu @updateSelected="updateSelected"  :lists="lists" :selectedList="selectedList"/>
-    
-        <ListEditor :selectedList="selectedList"/>
-    </div>
-</div>
+  <div :style="{padding: '1em'}">
 
-    
+    <div class="explorer-container" >
+      <ListMenu   :lists="listsStore.lists" @selectList="selectList"  />
+      <ListEditor class="list-editor"  :selectedList="selectedList" @deselectList="deselectList" @renameList="renameList"/>
+    </div>
+  </div>
+
 </template>
+
+<style scoped>
+/* Fieldset styling */
+.form-group {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  gap: 8px; /* Add space between elements */
+}
+
+/* Input field styling */
+.input-field {
+  flex: 1; /* Allow input to take up remaining space */
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* Plus icon styling */
+.pseudo.button.icon-plus {
+  cursor: pointer;
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.list-editor {
+  flex: 1;
+}
+
+.explorer-container  {
+  display: flex;
+  gap: 1em;
+}
+</style>
