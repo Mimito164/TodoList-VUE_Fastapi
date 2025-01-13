@@ -63,7 +63,7 @@ watchEffect(() => {
             <button @click="submitNewItem" class="pseudo button">➕</button>
         </div>
 
-        <div v-for="item in props.selectedList.todoItems.toReversed()">
+        <div v-for="item in props.selectedList.todoItems.toReversed()" :key="item._id">
             <TodoItem :listID="props.selectedList._id" :item="item"/>
         </div>
     </div>
