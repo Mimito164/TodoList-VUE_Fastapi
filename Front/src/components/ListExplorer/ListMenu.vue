@@ -23,6 +23,7 @@ function submitNewList(e:Event){
     }
 
     listsStore.createTodolist( todolisName.value.toString())
+    todolisName.value = ""
 }
 
 </script>
