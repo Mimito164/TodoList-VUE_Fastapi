@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, status, Response
-from ..db.models.user import User
-from ..db.models.todo_list import TodoList, CreateTodoList, UpdateTodoList
-from ..db.models.todo_item import TodoItem, UpdateTodoItem, AddSubTodoItem, UpdateSubTodoItem
-from ..db.client import users, todolists
+from db.models.user import User
+from db.models.todo_list import TodoList, CreateTodoList, UpdateTodoList
+from db.models.todo_item import TodoItem, UpdateTodoItem, AddSubTodoItem, UpdateSubTodoItem
+from db.client import users, todolists
 from bson import ObjectId
 
 router = APIRouter(

@@ -1,10 +1,6 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import FileResponse
-from .routers import api
+from fastapi import FastAPI
+from routers import api
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-import os
-from starlette.middleware.base import BaseHTTPMiddleware
 
 
 app = FastAPI()

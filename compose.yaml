@@ -1,17 +1,15 @@
-version: '3.8'
-
 services:
   backend:
     build: ./Back
-    container_name: back
+    container_name: backend
     ports:
       - "3001:3001"
 
   frontend:
     build: ./Front
-    container_name: my-app
+    container_name: frontend
     ports:
-      - "8080:80"
+      - "8080:8080"
 
   reverse-proxy:
     build: ./
