@@ -1,18 +1,37 @@
 <script setup lang="ts">
-import MiComponente from '@/components/MiComponente.vue';
-import MiComponente2 from '@/components/MiComponente2.vue';
+import ListExplorer from '@/components/ListExplorer/ListExplorer.vue';
+
+
+/////////////////////
+// Begin Test Area //
+/////////////////////
+
+// class input_action {
+//     displayText
+//     callback
+//     constructor(displayText:string, callback: () => void) {
+//         this.displayText = displayText;
+//         this.callback =  callback;
+//     }
+// }
+// const input_actions = [
+//     new input_action("a", ()=>{console.log("hola1")}),
+//     new input_action("b", ()=>{console.log("hola2")}),
+
+// ]
+// function uncb (){
+//     alert('esto funko!')
+// }
+// let texto = ref("")
+
+///////////////////
+// End Test Area //
+///////////////////
+
 </script>
 
 <template>
-<div>
-    HOLA MUNDO
-    <MiComponente/>
-    <MiComponente/>
 
-    <hr>
-
-    <MiComponente2 />
-    <MiComponente2 />
-</div>
-
+<!-- <TextInputBar :actions="input_actions" :customPlaceholder="'asd'" @submitCallback="uncb"/> -->
+<ListExplorer/>
 </template>

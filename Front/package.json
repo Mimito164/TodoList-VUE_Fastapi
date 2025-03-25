@@ -18,6 +18,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@web3-onboard/injected-wallets": "^2.10.17",
+    "@web3-onboard/metamask": "^2.0.7",
+    "@web3-onboard/vue": "^2.0.0",
+    "axios": "^1.7.9",
+    "ethers": "^6.13.5",
     "pinia": "^2.3.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
